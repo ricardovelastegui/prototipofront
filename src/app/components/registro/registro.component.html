@@ -1,0 +1,12 @@
+<div>
+    <h2>Registro</h2>
+    <label>Username: </label><input type="text" [(ngModel)]="username"><br>
+    <label>Password: </label><input type="password" [(ngModel)]="password"><br>
+    <label>Role: </label>
+    <select [(ngModel)]="role">
+      <option value="USUARIO">Usuario</option>
+      <option value="ADMIN">Admin</option>
+    </select><br>
+    <button (click)="registro()">Registrarse</button>
+  </div>
+  
