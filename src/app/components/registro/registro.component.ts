@@ -8,9 +8,9 @@ import { UsuarioService } from 'src/app/usuario.service';
 })
 export class RegistroComponent {
 
-  username: string | undefined;
-  password: string | undefined;
-  role: string | undefined;
+  username?: string;
+  password?: string;
+  role?: string;
 
   constructor(private usuarioService: UsuarioService) {}
 
@@ -20,7 +20,7 @@ export class RegistroComponent {
         console.log('Registro exitoso:', response);
         // Aquí puedes redirigir a otra página o hacer otras acciones después del registro
       }, error => {
-        console.error('Error en el registro:', error);
+        console.error('Error en el registro:', error.error);
       });
   }
 

@@ -8,8 +8,8 @@ import { UsuarioService } from 'src/app/usuario.service';
 })
 export class LoginComponent implements OnInit {
 
-  username: string | undefined;
-  password: string | undefined;
+  username?: string;
+  password?: string;
 
   constructor(private usuarioService: UsuarioService){}
 
