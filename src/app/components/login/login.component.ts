@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/usuario.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   username?: string;
   password?: string;
 
-  constructor(private usuarioService: UsuarioService){}
+  constructor(private usuarioService: UsuarioService, private router: Router){}
 
   ngOnInit(){
       
@@ -20,8 +21,9 @@ export class LoginComponent implements OnInit {
   login() {
     this.usuarioService.login({username: this.username, password: this.password})
       .subscribe(response => {
-        console.log('Login exitoso:', response);
-        // Aquí puedes redirigir a otra página o hacer otras acciones después del login
+        this.router.navigate(['/home']);
+
+        // mas logica, pilas
       }, error => {
         console.error('Error en el login:', error);
       });

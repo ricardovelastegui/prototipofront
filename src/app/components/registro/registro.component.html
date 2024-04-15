@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <h2>Registro</h2>
     <label>Username: </label><input type="text" [(ngModel)]="username"><br>
     <label>Password: </label><input type="password" [(ngModel)]="password"><br>
@@ -9,4 +9,34 @@
     </select><br>
     <button (click)="registro()">Registrarse</button>
   </div>
+   -->
+   <div>
+    <h2>Registro</h2>
+    <form #registroForm="ngForm" (ngSubmit)="registro()" novalidate>
+
+      <label>Username: </label>
+      <input type="text" [(ngModel)]="username" name="username" required minlength="3"><br>
+      <div *ngIf="registroForm.controls['username']?.invalid && (registroForm.controls['username']?.dirty || registroForm.controls['username']?.touched)">
+        <div *ngIf="registroForm.controls['username']?.errors?.['required']">Username es requerido.</div>
+        <div *ngIf="registroForm.controls['username']?.errors?.['minlength']">Username debe tener al menos 3 caracteres.</div>
+      </div>
+
+      <label>Password: </label>
+      <input type="password" [(ngModel)]="password" name="password" required minlength="6"><br>
+      <div *ngIf="registroForm.controls['password']?.invalid && (registroForm.controls['password']?.dirty || registroForm.controls['password']?.touched)">
+        <div *ngIf="registroForm.controls['password']?.errors?.['required']">Password es requerido.</div>
+        <div *ngIf="registroForm.controls['password']?.errors?.['minlength']">Password debe tener al menos 6 caracteres.</div>
+      </div>
+      <label>Role: </label>
+      <select [(ngModel)]="role" name="role" required>
+        <option value="USUARIO">Usuario</option>
+        <option value="ADMIN">Admin</option>
+      </select><br>
+      <div *ngIf="registroForm.controls['role']?.invalid && (registroForm.controls['role']?.dirty || registroForm.controls['role']?.touched)">
+        <div *ngIf="registroForm.controls['role']?.errors?.['required']">Role es requerido.</div>
+      </div>
+      <button [disabled]="registroForm.invalid">Registrarse</button>
+    </form>
+  </div>
   
+

@@ -1,11 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
+
+  private _isLoggedIn = false;
+
+  get isLoggedIn(): boolean {
+    return this._isLoggedIn;
+  } 
 
   private baseUrl = 'http://localhost:8090/api/usuarios'
 
@@ -16,6 +22,35 @@ export class UsuarioService {
   }
 
   login(usuario: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, usuario);
+    return this.http.post(`${this.baseUrl}/login`, usuario).pipe(
+      tap((response: any) => {
+        if (response && response.success){
+          this._isLoggedIn = true;
+        }
+      })
+    );
+    
   }
+
+  logout(): void {
+    // Tu lógica de cierre de sesión aquí
+    // Cuando el usuario cierra la sesión, establece _isLoggedIn en false
+    this._isLoggedIn = false;
+  }
+
 }
+
+
+// private loggedIn = new BehaviorSubject<boolean>(false);
+
+  // get isLoggedIn(): Observable<boolean> {
+  //   return this.loggedIn.asObservable();
+  // }
+
+  // logined(): void{
+  //   this.loggedIn.next(true);
+  // }
+
+  // logout(): void{
+  //   this.loggedIn.next(false);
+  // }
