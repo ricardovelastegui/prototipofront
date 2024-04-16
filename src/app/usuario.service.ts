@@ -6,8 +6,10 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
+  
 
   private _isLoggedIn = false;
+
 
   get isLoggedIn(): boolean {
     return this._isLoggedIn;
@@ -38,6 +40,7 @@ export class UsuarioService {
     this._isLoggedIn = false;
   }
 
+
 }
 
 
@@ -54,3 +57,6 @@ export class UsuarioService {
   // logout(): void{
   //   this.loggedIn.next(false);
   // }
+
+
+  
