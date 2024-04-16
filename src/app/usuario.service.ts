@@ -23,6 +23,14 @@ export class UsuarioService {
     return this.http.post(`${this.baseUrl}/registro`, usuario);
   }
 
+  saveUsuario(usuario: any): void{
+    localStorage.setItem('currentUser', JSON.stringify(usuario));
+
+  }
+  getUsuario(): any {
+    return JSON.parse(localStorage.getItem('currentUser')!);
+  }
+
   login(usuario: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, usuario).pipe(
       tap((response: any) => {
@@ -39,6 +47,7 @@ export class UsuarioService {
     // Cuando el usuario cierra la sesión, establece _isLoggedIn en false
     this._isLoggedIn = false;
   }
+
 
 
 }

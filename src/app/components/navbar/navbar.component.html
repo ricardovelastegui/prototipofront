@@ -1,1 +1,8 @@
-<p>navbar works!</p>
+<nav>
+    <ul>
+      <li *ngIf="isAdmin || isClient"><a routerLink="/inicio">Inicio</a></li>
+      <li *ngIf="isAdmin"><a routerLink="/reportes">Reportes</a></li>
+      <!-- Otros elementos del navbar -->
+    </ul>
+  </nav>
+    

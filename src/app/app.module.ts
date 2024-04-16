@@ -9,13 +9,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ReportesComponent } from './reportes/reportes.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistroComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ReportesComponent,
+    
   ],
   imports: [
     BrowserModule,
