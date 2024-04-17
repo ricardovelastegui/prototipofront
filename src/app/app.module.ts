@@ -8,8 +8,12 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { ReportesComponent } from './reportes/reportes.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ReportesComponent } from './components/dashboard/reportes/reportes.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { InicioComponent } from './components/dashboard/inicio/inicio.component';
+import { NavbarComponent } from './components/dashboard/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +22,16 @@ import { ReportesComponent } from './reportes/reportes.component';
     HomeComponent,
     NavbarComponent,
     ReportesComponent,
+    DashboardComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
