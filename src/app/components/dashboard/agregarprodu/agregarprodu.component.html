@@ -1,0 +1,79 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Añadir producto</h3>
+    <form (ngSubmit)= "onSubmit()" #videoForm="ngForm">
+        <div class="form-group">
+            <label>Nombre: </label>
+            <input type="text"
+            class="form-control"
+            id = "title"
+            [(ngModel)] = "producto.nombre"
+            name="nomnbre"
+            required
+            minlength="4"
+            maxlength="30"
+            placeholder="digite nombre"
+            #nombre = ngModel
+            >
+            <div class="alert alert-danger" *ngIf= "nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors?.['required']">
+                    digite nombre por favor
+                </div>
+                <div *ngIf = "nombre.errors?.['minlength']">
+                    El nombre tiene que contener como minimo 4 caracteres
+                  </div>
+                  <div *ngIf = "nombre.errors?.['maxlength']">
+                    El nombre tiene que tener como maximo 30 caracteres
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Tipo: </label>
+            <input type="text"
+            class="form-control"
+            id = "tipo"
+            [(ngModel)] = "producto.tipo"
+            name="tipo"
+            required
+            minlength="4"
+            maxlength="30"
+            placeholder="Digite el tipo"
+            #tipo = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf= "tipo.invalid && (tipo.dirty || tipo.touched)">
+                <div *ngIf = "tipo.errors?.['required']">
+                  Digite su tipo por favor
+                </div>
+                <div *ngIf = "tipo.errors?.['minlength']">
+                  tiene que contener como minimo 4 caracteres
+                </div>
+                <div *ngIf = "tipo.errors?.['maxlength']">
+                  tiene que tener como maximo 30 caracteres
+                </div>
+              </div>
+        </div>
+        <div class="form-group">
+            <label>Precio:</label>
+            <input type="number"
+                   class="form-control"
+                   id="price"
+                   [(ngModel)]="producto.price"
+                   name="price"
+                   required
+                   min="0"
+                   placeholder="Digite el precio"
+                   #price="ngModel">
+            <div class="alert alert-danger" *ngIf="price.invalid && (price.dirty || price.touched)">
+                <div *ngIf="price.errors?.['required']">
+                    Digite el precio por favor
+                </div>
+                <div *ngIf="price.errors?.['min']">
+                    El precio no puede ser negativo
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-success" [disabled]= "!videoForm.form.valid">Guardar</button>
+    </form>
+    
+</div>

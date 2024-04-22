@@ -1,1 +1,32 @@
-<p>dashboard works!</p>
+<h2>Lista de productos</h2>
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <input type="text" class="form-control" title="filterProducto" placeholder="Buscar..." [(ngModel)]="filterProducto">
+        </div>
+
+    </div>
+
+</div>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>nombre</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor= "let producto of productos | filter:filterProducto"> 
+            <td>{{ producto.nombre }}</td>
+            <td>{{producto.tipo}}</td>
+            <td>{{producto.price}}</td>
+            <td>
+                <button (click)= "actualizar(producto.id)" class="btn btn-info">Editar</button>
+                <button (click)= "eliminar(producto.id)" class="btn btn-info" style="margin-left: 10px;">Eliminar</button>
+                <button (click)= "ver(producto.id)" class="btn btn-primary" style="margin-left: 10px;">Ver</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

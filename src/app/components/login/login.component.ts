@@ -22,10 +22,11 @@ export class LoginComponent implements OnInit {
     this.usuarioService.login({username: this.username, password: this.password})
       .subscribe(response => {
         this.router.navigate(['/dashboard']);
-
+        return true;
         // mas logica, pilas
       }, error => {
         console.error('Error en el login:', error);
+        return false;
       });
   }
 

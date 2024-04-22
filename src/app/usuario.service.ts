@@ -48,6 +48,11 @@ export class UsuarioService {
     this._isLoggedIn = false;
   }
 
+  getIsLoggedIn(): boolean {
+    return this._isLoggedIn;
+  
+  }
+
 
 
 }

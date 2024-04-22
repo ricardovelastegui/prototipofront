@@ -9,16 +9,21 @@ import { UsuarioService } from 'src/app/usuario.service';
 export class NavbarComponent implements OnInit{
   isAdmin: boolean = false;
   isClient: boolean = false;
-
+  _isLoggedIn: boolean = false;
   constructor(private usuarioService: UsuarioService){}
 
   ngOnInit(): void {
+    this._isLoggedIn = this.usuarioService.getIsLoggedIn();
     const usuario = this.usuarioService.getUsuario();
     if(usuario && usuario.role === 'admin'){
       this.isAdmin = true;
     } else if(usuario && usuario.role === 'client'){
       this.isClient = true;
     }
+  }
+
+  logout(): void {
+    this.usuarioService.logout();
   }
 
 }
